@@ -54,8 +54,8 @@ const ResponseSection = ({
   };
 
   return (
-    <div className="flex place-content-center bg-neutral-900 p-10 h-full">
-      <div className="flex flex-col container w-screen h-auto items-center mx-10 bg-neutral-800 py-6 my-auto rounded-lg shadow-xl shadow-cyan-700">
+    <div className="flex place-content-center bg-neutral-900 p-10 h-full ">
+      <div className="flex flex-col container w-screen h-auto items-center mx-1 bg-neutral-800 py-6 my-auto rounded-lg shadow-xl shadow-cyan-700">
         <button
           className="md:w-1/4 bg-neutral-900 text-red-600 px-4 py-2 rounded-lg font-semibold hover:scale-105 transition duration-300 ease-in-out hover:bg-neutral-700 shadow-lg shadow-red-700"
           onClick={() => {
@@ -65,7 +65,7 @@ const ResponseSection = ({
         >
           Generate Response
         </button>
-        <div className=" text-cyan-500 md:mt-16 mt-10 mb-10 md:text-xl text-lg font-semibold mx-10">
+        <div className=" text-cyan-500 md:mt-16 mt-10 mb-10 md:text-xl text-lg font-semibold mx-1  text-justify tracking-tight">
           {response}
         </div>
       </div>
