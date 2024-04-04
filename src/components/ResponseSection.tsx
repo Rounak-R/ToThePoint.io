@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
 
 const ResponseSection = ({
   keyword,
@@ -66,7 +67,7 @@ const ResponseSection = ({
           Generate Response
         </button>
         <div className=" text-cyan-500 md:mt-16 mt-10 mb-10 md:text-xl text-lg font-semibold mx-1 text-justify tracking-tight">
-          {response}
+          <ReactMarkdown>{response}</ReactMarkdown>
         </div>
       </div>
     </div>
