@@ -78,7 +78,7 @@
 // export default ResponseSection;
 
 import { useState } from "react";
-import axios from "axios";
+
 import ReactMarkdown from "react-markdown";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
