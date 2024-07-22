@@ -1,7 +1,7 @@
 export const checkboxItems = [
   {
     id: "one",
-    label: "Use as default GPT",
+    label: "Use as default",
   },
   {
     id: "two",
