@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import ClipLoader from "react-spinners/ClipLoader"; // Import a spinner
 
 interface ResponseSectionProps {
   keyword: string;
@@ -12,8 +13,10 @@ const ResponseSection: React.FC<ResponseSectionProps> = ({
   selectedItems,
 }) => {
   const [response, setResponse] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false); // Add loading state
 
   const generateResponse = async () => {
+    setLoading(true); // Start loading
     try {
       const genAI = new GoogleGenerativeAI(
         import.meta.env.VITE_API_KEY as string
@@ -32,6 +35,8 @@ const ResponseSection: React.FC<ResponseSectionProps> = ({
     } catch (error) {
       console.error("Error generating response:", error);
       setResponse("Error generating response");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -41,12 +46,22 @@ const ResponseSection: React.FC<ResponseSectionProps> = ({
         <button
           className="md:w-1/4 bg-neutral-400 text-black px-4 py-2 rounded-lg font-serif hover:scale-105 transition duration-300 ease-in-out hover:bg-neutral-500 shadow-lg shadow-gray-500"
           onClick={generateResponse}
+          disabled={loading} // Disable button when loading
         >
-          Generate Response
+          {loading ? "Loading..." : "Generate Response"}
         </button>
-        <div className="text-black md:mt-16 mt-10 mb-10 md:text-xl text-lg font-sans mx-1 text-justify tracking-tight">
-          <ReactMarkdown>{response}</ReactMarkdown>
-        </div>
+        {loading ? (
+          <ClipLoader
+            color={"#f97316"}
+            loading={loading}
+            size={30}
+            className="mt-5"
+          />
+        ) : (
+          <div className="text-black md:mt-15 mt-10 mb-10 md:text-xl text-lg font-sans mx-1 text-justify tracking-tight">
+            <ReactMarkdown>{response}</ReactMarkdown>
+          </div>
+        )}
       </div>
     </div>
   );

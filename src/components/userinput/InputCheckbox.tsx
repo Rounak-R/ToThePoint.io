@@ -77,7 +77,7 @@ export function InputCheckbox({ setSelectedItems }: Props) {
           name="items"
           render={() => (
             <FormItem>
-              <div className="flex flex-col items-center mb-14">
+              <div className="flex flex-col items-center pb-4">
                 <FormLabel className="md:text-4xl text-3xl text-orange-500 font-bold pt-5">
                   Checkboxes
                 </FormLabel>
@@ -97,7 +97,7 @@ export function InputCheckbox({ setSelectedItems }: Props) {
                         onCheckedChange={() => handleCheckboxChange(item.id)}
                       />
                     </FormControl>
-                    <FormLabel className="tracking-tight font-sans text-orange-500 md:text-xl text-lg font-bold cursor-pointer px-1">
+                    <FormLabel className="tracking-tight font-sans text-orange-500 md:text-xl text-lg font-bold cursor-pointer">
                       {item.label}
                     </FormLabel>
                   </FormItem>
