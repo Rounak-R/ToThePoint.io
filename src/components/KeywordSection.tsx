@@ -19,7 +19,7 @@ const KeywordSection: React.FC<KeywordSectionProps> = ({ setKeyword }) => {
       Keyword
       <div>
         <Input
-          className="md:mt-auto mt-5 p-5 md:min-w-full text-orange-500 rounded-lg hover:scale-105 transition duration-300 hover:-translate-y-1 text-lg md:text-2xl shadow-xl text-center shadow-gray-300 bg-orange-200 border-none" // Updated class
+          className="md:mt-auto mt-5 p-5 md:min-w-full  text-orange-500 rounded-xl hover:scale-105 transition duration-300 hover:-translate-y-1 text-lg md:text-2xl shadow-xl text-center shadow-gray-300 bg-orange-200 border-none"
           placeholder="Keyword of your question"
           type="text"
           value={keywordInput}

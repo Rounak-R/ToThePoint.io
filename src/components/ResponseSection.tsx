@@ -41,10 +41,10 @@ const ResponseSection: React.FC<ResponseSectionProps> = ({
   };
 
   return (
-    <div className="flex place-content-center bg-orange-100 p-10 h-full ">
-      <div className="flex flex-col container w-screen h-auto items-center mx-1 bg-orange-200 py-6 my-10 rounded-lg shadow-xl shadow-gray-300">
+    <div className="flex place-content-center bg-orange-100 p-8 h-full  ">
+      <div className="flex flex-col container w-screen h-auto items-center mx-1 bg-orange-200 py-6 my-10 rounded-2xl shadow-xl shadow-gray-300">
         <button
-          className="md:w-1/4 bg-neutral-400 text-black px-4 py-2 rounded-lg font-serif hover:scale-105 transition duration-300 ease-in-out hover:bg-neutral-500 shadow-lg shadow-gray-500"
+          className="md:w-1/4 bg-neutral-400 text-black px-4 py-2 rounded-xl font-serif hover:scale-105 transition duration-300 ease-in-out hover:bg-neutral-500 shadow-lg shadow-gray-500"
           onClick={generateResponse}
           disabled={loading} // Disable button when loading
         >
@@ -58,7 +58,7 @@ const ResponseSection: React.FC<ResponseSectionProps> = ({
             className="mt-5"
           />
         ) : (
-          <div className="text-black md:mt-15 mt-10 mb-10 md:text-xl text-lg font-sans mx-1 text-justify tracking-tight">
+          <div className="text-black md:mt-15 mt-10 mb-10 md:text-lg text-sm font-sans mx-1 text-justify tracking-normal">
             <ReactMarkdown>{response}</ReactMarkdown>
           </div>
         )}
