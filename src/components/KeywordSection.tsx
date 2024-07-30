@@ -15,11 +15,11 @@ const KeywordSection: React.FC<KeywordSectionProps> = ({ setKeyword }) => {
   };
 
   return (
-    <div className="items-center flex-col flex justify-around md:flex-row md:text-4xl bg-neutral-900 text-cyan-500 font-bold text-3xl py-20 px-20">
+    <div className="items-center flex-col flex justify-around md:flex-row md:text-4xl bg-orange-100 text-orange-500 font-bold text-3xl py-20 px-20">
       Keyword
       <div>
         <Input
-          className="md:mt-auto mt-5 p-5 md:min-w-full text-cyan-500 bg-neutral-800 rounded-lg hover:scale-105 transition duration-300 hover:-translate-y-1 text-lg md:text-2xl shadow-xl text-center border-none shadow-cyan-700"
+          className="md:mt-auto mt-5 p-5 md:min-w-full text-orange-500 rounded-lg hover:scale-105  transition duration-300 hover:-translate-y-1 text-lg md:text-2xl shadow-xl text-center border-none shadow-gray-300 bg-orange-200 focus:shadow-xl focus:shadow-gray-300 focus:outline-none"
           placeholder="Keyword of your question"
           type="text"
           value={keywordInput}

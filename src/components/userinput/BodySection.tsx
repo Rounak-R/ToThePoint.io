@@ -19,11 +19,7 @@ const BodySection = () => {
     <>
       <KeywordSection setKeyword={setKeyword} />
       <InputCheckbox setSelectedItems={setSelectedItems} />
-      <ResponseSection
-        keyword={keyword}
-        selectedItems={selectedItems}
-        // onGenerateResponse={handleGenerateResponse} // Pass the function to generate response
-      />
+      <ResponseSection keyword={keyword} selectedItems={selectedItems} />
     </>
   );
 };

@@ -24,7 +24,7 @@ type FormValues = {
 };
 
 const FormSchema = z.object({
-  items: z.array(z.string()).refine((value) => value.some((item) => item), {
+  items: z.array(z.string()).refine((value) => value.length > 0, {
     message: "You have to select at least one item.",
   }),
 });
@@ -35,7 +35,7 @@ export function InputCheckbox({ setSelectedItems }: Props) {
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      items: ["one", "three"],
+      items: [],
     },
   });
 
@@ -44,7 +44,7 @@ export function InputCheckbox({ setSelectedItems }: Props) {
     toast({
       title: "You submitted the following values:",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+        <pre className="mt-2 w-[340px] rounded-md bg-slate- p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -56,50 +56,40 @@ export function InputCheckbox({ setSelectedItems }: Props) {
     if (!selectedItem) return;
 
     const selectedItemLabel = selectedItem.label;
+    setCheckedItems((prevCheckedItems) =>
+      prevCheckedItems.includes(selectedItemLabel)
+        ? prevCheckedItems.filter((item) => item !== selectedItemLabel)
+        : [...prevCheckedItems, selectedItemLabel]
+    );
 
-    if (checkedItems.includes(selectedItemLabel)) {
-      setCheckedItems(
-        checkedItems.filter((checkedItem) => checkedItem !== selectedItemLabel)
-      );
-    } else {
-      setCheckedItems([...checkedItems, selectedItemLabel]);
-    }
-
-    setSelectedItems((prevSelectedItems) => {
-      if (checkedItems.includes(selectedItemLabel)) {
-        return prevSelectedItems.filter(
-          (selectedItem) => selectedItem !== selectedItemLabel
-        );
-      } else {
-        return [...prevSelectedItems, selectedItemLabel];
-      }
-    });
+    setSelectedItems((prevSelectedItems) =>
+      prevSelectedItems.includes(selectedItemLabel)
+        ? prevSelectedItems.filter((item) => item !== selectedItemLabel)
+        : [...prevSelectedItems, selectedItemLabel]
+    );
   };
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col space-y-8 bg-neutral-800 p-10"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="bg-orange-200">
         <FormField
           control={form.control}
           name="items"
           render={() => (
             <FormItem>
-              <div className="flex flex-col items-center mb-12">
-                <FormLabel className="md:text-4xl text-3xl text-cyan-500 font-bold">
+              <div className="flex flex-col items-center mb-14">
+                <FormLabel className="md:text-4xl text-3xl text-orange-500 font-bold pt-5">
                   Checkboxes
                 </FormLabel>
-                <FormDescription className="text-cyan-500 md:text-2xl text-lg">
+                <FormDescription className="text-orange-500 md:text-2xl text-lg">
                   Select the way you want your answer to be framed.
                 </FormDescription>
               </div>
-              <div className="flex flex-col md:flex-row items-center md:justify-around space-y-4">
+              <div className="flex flex-col md:flex-row items-center md:justify-around space-y-4 md:space-y-0 pb-10">
                 {checkboxItems.map((item) => (
                   <FormItem
                     key={item.id}
-                    className="items-center file:space-x-3 transition duration-300 ease-in-out transform hover:scale-105"
+                    className="items-center space-x-3 transition duration-300 ease-in-out transform hover:scale-105 mb-4 md:mb-0"
                   >
                     <FormControl>
                       <Checkbox
@@ -107,7 +97,7 @@ export function InputCheckbox({ setSelectedItems }: Props) {
                         onCheckedChange={() => handleCheckboxChange(item.id)}
                       />
                     </FormControl>
-                    <FormLabel className="tracking-tight font-sans text-cyan-500 md:text-xl text-lg font-bold cursor-pointer space-y-9 px-4">
+                    <FormLabel className="tracking-tight font-sans text-orange-500 md:text-xl text-lg font-bold cursor-pointer px-1">
                       {item.label}
                     </FormLabel>
                   </FormItem>

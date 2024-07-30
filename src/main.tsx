@@ -7,7 +7,7 @@ import BodySection from "./components/userinput/BodySection";
 
 ReactDOM.render(
   <React.StrictMode>
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <Header />
       <BodySection />
       <Footer />
